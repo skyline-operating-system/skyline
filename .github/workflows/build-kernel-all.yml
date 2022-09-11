@@ -4,9 +4,12 @@ on:
   push:
 
 jobs:
-  build:
+  x86_64-uefi:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        name: Build kernel
       - uses: ./.github/actions/build-kernel
         with:
           arch: x86_64
