@@ -14,6 +14,10 @@ inputs:
     description: 'The bootloader'
     required: true
     default: 'uefi'
+  source-directory:
+    description: 'Source directory for kernel'
+    required: true
+    default: '.'
 
 runs:
   using: 'docker'
@@ -22,3 +26,4 @@ runs:
     SKYLINE_ARCH: ${{ inputs.arch }}
     SKYLINE_SUB_ARCH: ${{ inputs.subarch }}
     SKYLINE_BOOTLOADER: ${{ inputs.bootloader }}
+    SKYLINE_SOURCE_DIR: ${{ inputs.source-directory }}
