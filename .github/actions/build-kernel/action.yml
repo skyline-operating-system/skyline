@@ -28,7 +28,7 @@ runs:
       username: ${{ github.actor }}
       password: ${{ inputs.registry_token }}
   - name: 'Build kernel'
-    image: 'ghcr.io/skyline-operating-system/kernel-buildbot:latest'
+    uses: 'docker://ghcr.io/skyline-operating-system/kernel-buildbot:latest'
     env:
       SKYLINE_ARCH: ${{ inputs.arch }}
       SKYLINE_SUB_ARCH: ${{ inputs.subarch }}
