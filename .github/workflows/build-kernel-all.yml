@@ -13,8 +13,8 @@ jobs:
           submodules: recursive
       - name: Build kernel
         uses: ./.github/actions/build-kernel
-        working-directory: ./kernel
         with:
           arch: x86_64
           subarch:
+          working-directory: ./kernel
           bootloader: uefi
