@@ -14,22 +14,17 @@ inputs:
     description: 'The bootloader'
     required: true
     default: 'uefi'
-  registry_password:
+  github_token:
     description: 'GHCR token'
     required: true
 
 runs:
   using: 'docker'
-  steps:
-  - name: Login to GHCR
-    uses: docker/login-action@v2
-    with:
-      registry: ghcr.io
-      username: ${{ github.actor }}
-      password: ${{ inputs.registry_token }}
-  - name: 'Build kernel'
-    uses: 'docker://ghcr.io/skyline-operating-system/kernel-buildbot:latest'
-    env:
-      SKYLINE_ARCH: ${{ inputs.arch }}
-      SKYLINE_SUB_ARCH: ${{ inputs.subarch }}
-      SKYLINE_BOOTLOADER: ${{ inputs.bootloader }}
+  image: 'ghcr.io/skyline-operating-system/kernel-buildbot:latest'
+  credentials:
+    username: ${{ github.actor }}
+    password: ${{ inputs.github_token }}
+  env:
+    SKYLINE_ARCH: ${{ inputs.arch }}
+    SKYLINE_SUB_ARCH: ${{ inputs.subarch }}
+    SKYLINE_BOOTLOADER: ${{ inputs.bootloader }}

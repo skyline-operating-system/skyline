@@ -15,4 +15,4 @@ jobs:
           arch: x86_64
           subarch:
           bootloader: uefi
-          registry_password: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
