@@ -1,0 +1,22 @@
+name: Build Kernel
+description: 'Builds the skyline kernel'
+inputs:
+  arch:
+    description: 'Primary Architecture'
+    required: true
+    default: 'x86_64'
+  subarch:
+    description: 'Subarchitecture'
+    required: true
+    default: ''
+  bootloader:
+    description: 'The bootloader'
+    required: true
+    default: 'uefi'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    SKYLINE_ARCH: ${{ inputs.arch }}
+    SKYLINE_SUB_ARCH: ${{ inputs.subarch }}
+    SKYLINE_BOOTLOADER: ${{ inputs.bootloader }}

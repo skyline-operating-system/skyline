@@ -1,0 +1,14 @@
+name: Build Kernel(s)
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/build-kernel
+        with:
+          arch: x86_64
+          subarch:
+          bootloader: uefi
