@@ -16,5 +16,5 @@ jobs:
         with:
           arch: x86_64
           subarch:
-          working-directory: ./kernel
+          source-directory: ./kernel
           bootloader: uefi
