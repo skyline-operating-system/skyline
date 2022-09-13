@@ -16,5 +16,19 @@ jobs:
         with:
           arch: x86_64
           subarch:
-          source-directory: ./kernel
           bootloader: uefi
+          source-directory: ./kernel
+  aarch64-rpi3-default:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Build kernel
+        uses: ./.github/actions/build-kernel
+        with:
+          arch: aarch64
+          subarch: rpi3
+          bootloader: default
+          source-directory: ./kernel
